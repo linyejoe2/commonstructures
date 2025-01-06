@@ -1,21 +1,21 @@
-package rlinkliststack_test
+package rarraystack_test
 
 import (
 	"testing"
 
-	"github.com/linyejoe2/commonstructures/rstack/rlinkliststack"
+	"github.com/linyejoe2/commonstructures/rstack/rarraystack"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestNewRLinkListStack(t *testing.T) {
-	stack := rlinkliststack.NewRLinkListStack[int]()
+	stack := rarraystack.NewRArrayStack[int]()
 	assert.NotNil(t, stack)
 	assert.True(t, stack.IsEmpty())
 	assert.Equal(t, 0, stack.Size())
 }
 
 func TestPush(t *testing.T) {
-	stack := rlinkliststack.NewRLinkListStack[int]()
+	stack := rarraystack.NewRArrayStack[int]()
 	stack.Push(1)
 	stack.Push(2)
 
@@ -24,7 +24,7 @@ func TestPush(t *testing.T) {
 }
 
 func TestPop(t *testing.T) {
-	stack := rlinkliststack.NewRLinkListStack[int]()
+	stack := rarraystack.NewRArrayStack[int]()
 	stack.Push(1)
 	stack.Push(2)
 
@@ -38,11 +38,11 @@ func TestPop(t *testing.T) {
 
 	// Pop from an empty stack should return the zero value
 	val = stack.Pop()
-	assert.Equal(t, 0, val) // Assuming the zero value for an int is 0
+	assert.Equal(t, 0, val)
 }
 
 func TestPeek(t *testing.T) {
-	stack := rlinkliststack.NewRLinkListStack[int]()
+	stack := rarraystack.NewRArrayStack[int]()
 	stack.Push(1)
 	stack.Push(2)
 
@@ -60,7 +60,7 @@ func TestPeek(t *testing.T) {
 }
 
 func TestIsEmpty(t *testing.T) {
-	stack := rlinkliststack.NewRLinkListStack[int]()
+	stack := rarraystack.NewRArrayStack[int]()
 	assert.True(t, stack.IsEmpty())
 
 	stack.Push(1)
@@ -71,7 +71,7 @@ func TestIsEmpty(t *testing.T) {
 }
 
 func TestToSlice(t *testing.T) {
-	stack := rlinkliststack.NewRLinkListStack[int]()
+	stack := rarraystack.NewRArrayStack[int]()
 	stack.Push(1)
 	stack.Push(2)
 	stack.Push(3)
@@ -81,29 +81,4 @@ func TestToSlice(t *testing.T) {
 
 	// Ensure that the stack structure is not affected after ToSlice
 	assert.Equal(t, 3, stack.Peek())
-}
-
-func TestToSliceWithNewInstance(t *testing.T) {
-	stack := rlinkliststack.NewRLinkListStack[int]()
-	stack.Push(1)
-	stack.Push(2)
-	stack.Push(3)
-
-	slice := stack.ToSliceWithNewInstance()
-	assert.Equal(t, &[]int{3, 2, 1}, slice)
-
-	// Ensure that the stack structure is not affected after ToSliceWithNewInstance
-	assert.Equal(t, 3, stack.Peek())
-}
-
-func TestPopAndPrintAll(t *testing.T) {
-	stack := rlinkliststack.NewRLinkListStack[int]()
-	stack.Push(1)
-	stack.Push(2)
-	stack.Push(3)
-
-	// Manually checking the printed output might be necessary,
-	// or you can use a mock to capture the output.
-	stack.PopAndPrintAll()
-	assert.True(t, stack.IsEmpty())
 }
