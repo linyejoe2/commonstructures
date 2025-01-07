@@ -106,3 +106,13 @@ func main() {
     fmt.Println(queue.Peek())    // Outputs: 20
 }
 ```
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
+## 🌟 Acknowledgments
+
+This library was created with the goal of making data structure implementations simple and reusable for Go developers. Contributions and suggestions are always welcome!
+
+Author: [inyejoe2](https://linyejoe2.site/portfolio) 
